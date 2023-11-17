@@ -1,0 +1,42 @@
+#User function Template for python3
+
+import heapq
+class Solution:
+    #Function to return k largest elements from an array.
+    def kLargest(self,li,n,k):
+        heap = []
+        for value in li:
+            #pushing the current value in Heap.
+            heapq.heappush(heap, value)
+            #if size of Heap becomes greater than k, we pop the element.
+            if len(heap) > k:
+                heapq.heappop(heap)
+        
+        ans = []
+        
+        #while heap is not empty, we store the top element in list and pop it.
+        while len(heap) > 0:
+            ans.append(heapq.heappop(heap))
+            
+        #reversing the list and returning it.
+        ans.reverse()
+        return ans
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+t=int(input())
+for _ in range(t):
+    li = [int(x) for x in input().strip().split()]
+    n=li[0]
+    k=li[1]
+    li = [int(x) for x in input().strip().split()]
+    ob=Solution()
+    k_largest_list = ob.kLargest(li,n,k)
+    
+    for element in k_largest_list:
+        print(element, end = ' ')
+    print('')
+# } Driver Code Ends
